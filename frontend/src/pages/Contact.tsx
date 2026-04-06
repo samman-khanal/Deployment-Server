@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Navbar } from "../layout/Navbar";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
 import { Footer } from "../layout/Footer";
-import axios from "axios";
+import { api } from "../api/axios";
 import {
   Mail,
   Phone,
@@ -67,10 +67,7 @@ export default function Contact() {
     }
     setIsSubmitting(true);
     try {
-      await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/contact`,
-        formData,
-      );
+      await api.post('/contact', formData);
       setSubmittedData({ name: formData.name, subject: formData.subject });
       setIsSubmitted(true);
       setFormData({ name: "", email: "", subject: "General Inquiry", message: "" });

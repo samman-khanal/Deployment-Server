@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import { api } from "../api/axios";
 import { Link, useNavigate } from "react-router-dom";
 import { Mail, ArrowLeft, Send } from "lucide-react";
 import { toast } from "sonner";
@@ -7,8 +7,6 @@ import { AuthLayout } from "./AuthLayout";
 import { Input } from "../components/ui/Input";
 import { Button } from "../components/ui/Button";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 interface FormData {
   email: string;
@@ -97,22 +95,9 @@ export default function ForgotPassword() {
 
     // Simulate API call
     try {
-      if (!API_BASE_URL)
-        throw new Error(
-          "Something went wrong. Please try again later.",
-        );
-
-      await axios.post(
-        `${API_BASE_URL}/auth/forgot-password`,
-        {
-          email: formData.email.trim().toLowerCase(),
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        },
-      );
+      await api.post('/auth/forgot-password', {
+        email: formData.email.trim().toLowerCase(),
+      });
 
       toast.success("If an account exists, a reset link has been sent.");
 

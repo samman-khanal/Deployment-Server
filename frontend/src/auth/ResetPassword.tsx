@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { api } from "../api/axios";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { Lock, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 import { AuthLayout } from "./AuthLayout";
 import { Input } from "../components/ui/Input";
 import { Button } from "../components/ui/Button";
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 interface FormData {
   password: string;
@@ -164,25 +162,11 @@ export default function ResetPassword() {
     setIsLoading(true);
 
     try {
-      if (!API_BASE_URL)
-        throw new Error(
-          "Something went wrong. Please try again later.",
-        );
-
-      await axios.post(
-        `${API_BASE_URL}/auth/reset-password`,
-        {
-          token,
-          newPassword: formData.password,
-          // Keep compatibility in case backend expects the old field name.
-          password: formData.password,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        },
-      );
+      await api.post('/auth/reset-password', {
+        token,
+        newPassword: formData.password,
+        password: formData.password,
+      });
 
       toast.success("Password reset successful!", {
         description: "You can now sign in with your new password",

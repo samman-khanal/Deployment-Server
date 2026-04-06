@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { api } from "../api/axios";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { toast } from "sonner";
 import { Mail, Lock, ArrowRight, Shield, Loader2 } from "lucide-react";
@@ -10,8 +10,6 @@ import { Checkbox } from "../components/ui/Checkbox";
 import { AuthLayout } from "./AuthLayout";
 import { useAuth } from "../hooks/useAuth";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export default function Login() {
   useDocumentTitle("Login");
@@ -107,17 +105,12 @@ export default function Login() {
     setIsLoading(true);
 
     try {
-      if (!API_BASE_URL)
-        throw new Error("Something went wrong. Please try again later.");
-
       const payload = {
         email: formData.email.trim().toLowerCase(),
         password: formData.password,
       };
 
-      const res = await axios.post(`${API_BASE_URL}/auth/login`, payload, {
-        headers: { "Content-Type": "application/json" },
-      });
+      const res = await api.post('/auth/login', payload);
 
       const { token, user } = res.data;
 
@@ -156,11 +149,7 @@ export default function Login() {
   };
 
   const handleGoogleLogin = () => {
-    if (!API_BASE_URL) {
-      toast.error("Service unavailable. Please try again later.");
-      return;
-    }
-    window.location.href = `${API_BASE_URL}/auth/google`;
+    window.location.href = `${import.meta.env.VITE_API_BASE_URL}/auth/google`;
   };
 
   if (isRedirecting) {

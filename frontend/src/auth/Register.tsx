@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { api } from "../api/axios";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { User, Mail, Lock, ArrowRight, Shield, Check, X } from "lucide-react";
@@ -8,8 +8,6 @@ import { Button } from "../components/ui/Button";
 import { Checkbox } from "../components/ui/Checkbox";
 import { AuthLayout } from "./AuthLayout";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 interface PasswordRequirement {
   label: string;
@@ -178,11 +176,6 @@ export default function Register() {
     setIsLoading(true);
 
     try {
-      if (!API_BASE_URL)
-        throw new Error(
-          "Something went wrong. Please try again later.",
-        );
-
       // Send only what backend needs (never send confirmPassword)
       const payload = {
         fullName: formData.fullName.trim(),
@@ -190,9 +183,7 @@ export default function Register() {
         password: formData.password,
       };
 
-      await axios.post(`${API_BASE_URL}/auth/register`, payload, {
-        headers: { "Content-Type": "application/json" },
-      });
+      await api.post('/auth/register', payload);
 
       toast.success("Account created! Check your email for the verification code.");
 
@@ -213,11 +204,7 @@ export default function Register() {
   };
 
   const handleGoogleSignup = () => {
-    if (!API_BASE_URL) {
-      toast.error("Service unavailable. Please try again later.");
-      return;
-    }
-    window.location.href = `${API_BASE_URL}/auth/google`;
+    window.location.href = `${import.meta.env.VITE_API_BASE_URL}/auth/google`;
   };
 
   const getPasswordStrength = () => {

@@ -1,12 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
-import axios from "axios";
+import { api } from "../api/axios";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { toast } from "sonner";
 import { Mail, ArrowRight, RotateCcw, Shield } from "lucide-react";
 import { AuthLayout } from "./AuthLayout";
 import { Button } from "../components/ui/Button";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const OTP_LENGTH = 6;
 const RESEND_COOLDOWN = 60;
 
@@ -115,7 +114,7 @@ export default function VerifyEmail() {
     setError("");
 
     try {
-      await axios.post(`${API_BASE_URL}/auth/verify-otp`, {
+      await api.post('/auth/verify-otp', {
         email: emailFromQuery,
         otp,
       });
@@ -143,7 +142,7 @@ export default function VerifyEmail() {
     setError("");
 
     try {
-      await axios.post(`${API_BASE_URL}/auth/resend-otp`, { email: emailFromQuery });
+      await api.post('/auth/resend-otp', { email: emailFromQuery });
       toast.success("A new verification code has been sent.");
       setDigits(Array(OTP_LENGTH).fill(""));
       focusInput(0);
