@@ -1,8 +1,10 @@
 //? CORS configuration options.
 export const corsOptions = {
   origin: (origin, cb) => {
-    // Support comma-separated list: FRONTEND_URL=https://app.com,http://localhost:5173
-    const allowed = (process.env.FRONTEND_URL || "")
+    // CORS_ORIGINS takes priority (comma-separated list for multiple origins).
+    // Falls back to FRONTEND_URL as a single origin.
+    const raw = process.env.CORS_ORIGINS || process.env.FRONTEND_URL || "";
+    const allowed = raw
       .split(",")
       .map((u) => u.trim())
       .filter(Boolean);
