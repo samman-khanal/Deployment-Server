@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-transition {
+  animation: page-in 0.22s ease-out both;
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+/* ─── Accent palette overrides ────────────────────────────────────────────────
+   Tailwind v4 exposes every color as a CSS custom property.
+   We remap --color-indigo-* (the app's primary accent) to the chosen palette
+   by setting a data-palette attribute on <html>. No component code needs to
+   change — existing indigo-* classes automatically reflect the new hue.
+   ──────────────────────────────────────────────────────────────────────────── */
+
+html[data-palette="violet"] {
+  --color-indigo-50:  var(--color-violet-50);
+  --color-indigo-100: var(--color-violet-100);
+  --color-indigo-200: var(--color-violet-200);
+  --color-indigo-300: var(--color-violet-300);
+  --color-indigo-400: var(--color-violet-400);
+  --color-indigo-500: var(--color-violet-500);
+  --color-indigo-600: var(--color-violet-600);
+  --color-indigo-700: var(--color-violet-700);
+  --color-indigo-800: var(--color-violet-800);
+  --color-indigo-900: var(--color-violet-900);
+  --color-indigo-950: var(--color-violet-950);
+}
+
+html[data-palette="blue"] {
+  --color-indigo-50:  var(--color-blue-50);
+  --color-indigo-100: var(--color-blue-100);
+  --color-indigo-200: var(--color-blue-200);
+  --color-indigo-300: var(--color-blue-300);
+  --color-indigo-400: var(--color-blue-400);
+  --color-indigo-500: var(--color-blue-500);
+  --color-indigo-600: var(--color-blue-600);
+  --color-indigo-700: var(--color-blue-700);
+  --color-indigo-800: var(--color-blue-800);
+  --color-indigo-900: var(--color-blue-900);
+  --color-indigo-950: var(--color-blue-950);
+}
+
+html[data-palette="sky"] {
+  --color-indigo-50:  var(--color-sky-50);
+  --color-indigo-100: var(--color-sky-100);
+  --color-indigo-200: var(--color-sky-200);
+  --color-indigo-300: var(--color-sky-300);
+  --color-indigo-400: var(--color-sky-400);
+  --color-indigo-500: var(--color-sky-500);
+  --color-indigo-600: var(--color-sky-600);
+  --color-indigo-700: var(--color-sky-700);
+  --color-indigo-800: var(--color-sky-800);
+  --color-indigo-900: var(--color-sky-900);
+  --color-indigo-950: var(--color-sky-950);
+}
+
+html[data-palette="rose"] {
+  --color-indigo-50:  var(--color-rose-50);
+  --color-indigo-100: var(--color-rose-100);
+  --color-indigo-200: var(--color-rose-200);
+  --color-indigo-300: var(--color-rose-300);
+  --color-indigo-400: var(--color-rose-400);
+  --color-indigo-500: var(--color-rose-500);
+  --color-indigo-600: var(--color-rose-600);
+  --color-indigo-700: var(--color-rose-700);
+  --color-indigo-800: var(--color-rose-800);
+  --color-indigo-900: var(--color-rose-900);
+  --color-indigo-950: var(--color-rose-950);
+}
+
+html[data-palette="emerald"] {
+  --color-indigo-50:  var(--color-emerald-50);
+  --color-indigo-100: var(--color-emerald-100);
+  --color-indigo-200: var(--color-emerald-200);
+  --color-indigo-300: var(--color-emerald-300);
+  --color-indigo-400: var(--color-emerald-400);
+  --color-indigo-500: var(--color-emerald-500);
+  --color-indigo-600: var(--color-emerald-600);
+  --color-indigo-700: var(--color-emerald-700);
+  --color-indigo-800: var(--color-emerald-800);
+  --color-indigo-900: var(--color-emerald-900);
+  --color-indigo-950: var(--color-emerald-950);
+}
+
+html[data-palette="amber"] {
+  --color-indigo-50:  var(--color-amber-50);
+  --color-indigo-100: var(--color-amber-100);
+  --color-indigo-200: var(--color-amber-200);
+  --color-indigo-300: var(--color-amber-300);
+  --color-indigo-400: var(--color-amber-400);
+  --color-indigo-500: var(--color-amber-500);
+  --color-indigo-600: var(--color-amber-600);
+  --color-indigo-700: var(--color-amber-700);
+  --color-indigo-800: var(--color-amber-800);
+  --color-indigo-900: var(--color-amber-900);
+  --color-indigo-950: var(--color-amber-950);
+}
+
+html[data-palette="pink"] {
+  --color-indigo-50:  var(--color-pink-50);
+  --color-indigo-100: var(--color-pink-100);
+  --color-indigo-200: var(--color-pink-200);
+  --color-indigo-300: var(--color-pink-300);
+  --color-indigo-400: var(--color-pink-400);
+  --color-indigo-500: var(--color-pink-500);
+  --color-indigo-600: var(--color-pink-600);
+  --color-indigo-700: var(--color-pink-700);
+  --color-indigo-800: var(--color-pink-800);
+  --color-indigo-900: var(--color-pink-900);
+  --color-indigo-950: var(--color-pink-950);
+}
+
+html[data-palette="teal"] {
+  --color-indigo-50:  var(--color-teal-50);
+  --color-indigo-100: var(--color-teal-100);
+  --color-indigo-200: var(--color-teal-200);
+  --color-indigo-300: var(--color-teal-300);
+  --color-indigo-400: var(--color-teal-400);
+  --color-indigo-500: var(--color-teal-500);
+  --color-indigo-600: var(--color-teal-600);
+  --color-indigo-700: var(--color-teal-700);
+  --color-indigo-800: var(--color-teal-800);
+  --color-indigo-900: var(--color-teal-900);
+  --color-indigo-950: var(--color-teal-950);
+}
