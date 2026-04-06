@@ -216,7 +216,7 @@ export default function DMPage() {
   return (
     <div className="flex-1 flex flex-col min-h-0">
       {/* Header */}
-      <div className="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 px-6 py-4 shrink-0">
+      <div className="sticky top-0 z-10 bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 px-4 sm:px-6 py-3 sm:py-4 shrink-0">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <button
@@ -237,9 +237,9 @@ export default function DMPage() {
                   </div>
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold text-slate-900 dark:text-white">
+                  <h2 className="text-base sm:text-xl font-bold text-slate-900 dark:text-white">
                     {peerName}{" "}
-                    <span className="text-base font-medium text-slate-400">
+                    <span className="text-sm sm:text-base font-medium text-slate-400">
                       (you)
                     </span>
                   </h2>
@@ -259,7 +259,7 @@ export default function DMPage() {
                   )}
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold text-slate-900 dark:text-white">
+                  <h2 className="text-base sm:text-xl font-bold text-slate-900 dark:text-white truncate max-w-[140px] sm:max-w-none">
                     {peerName}
                   </h2>
                   <p className="text-sm text-slate-600 dark:text-slate-400">
