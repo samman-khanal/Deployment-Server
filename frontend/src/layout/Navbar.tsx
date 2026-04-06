@@ -94,18 +94,18 @@ export function Navbar() {
           {/* Right side: CTA + Hamburger */}
           <div className="flex items-center gap-3">
             {/* Desktop CTA */}
-            <a
-              href="/login"
-              className="hidden sm:block text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors"
+            <NavLink
+              to="/login"
+              className={({ isActive }) => `hidden sm:block text-sm font-medium transition-colors ${isActive ? "text-indigo-600 font-semibold" : "text-slate-600 hover:text-slate-900"}`}
             >
               Sign In
-            </a>
-            <a
-              href="/register"
+            </NavLink>
+            <NavLink
+              to="/register"
               className="hidden sm:block px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 transition-colors"
             >
               Get Started
-            </a>
+            </NavLink>
 
             {/* Hamburger – mobile only */}
             <button
@@ -162,20 +162,20 @@ export function Navbar() {
               Contact
             </NavLink>
             <div className="pt-3 border-t border-slate-100 flex flex-col gap-2 mt-2">
-              <a
-                href="/login"
+              <NavLink
+                to="/login"
                 onClick={closeMenu}
                 className="block w-full text-center px-4 py-2.5 text-sm font-medium text-slate-700 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors"
               >
                 Sign In
-              </a>
-              <a
-                href="/register"
+              </NavLink>
+              <NavLink
+                to="/register"
                 onClick={closeMenu}
                 className="block w-full text-center px-4 py-2.5 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 transition-colors"
               >
                 Get Started
-              </a>
+              </NavLink>
             </div>
           </div>
         </div>
