@@ -287,8 +287,8 @@ export default function ChatInput({ placeholder, onSend, onTyping, onStopTyping,
           value={messageInput}
           onChange={handleTextareaChange}
           placeholder={placeholder}
-          className="w-full px-4 py-3 bg-transparent border-0 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none resize-none"
-          rows={2}
+          className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-transparent border-0 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none resize-none"
+          rows={1}
           onKeyDown={handleKeyDown}
         />
         <div className="flex items-center justify-end p-3">
