@@ -317,15 +317,6 @@ export default function KanbanBoard({
         // Ensure tasks are sorted by order within columns
         return updated.sort((a, b) => a.order - b.order);
       });
-      // Refresh columns to reflect the move
-      setColumns((prev) =>
-        prev.map((col) => ({
-          ...col,
-          tasks: col.tasks
-            ? col.tasks.filter((tid) => tid !== task._id)
-            : [],
-        })),
-      );
     };
 
     socket.on(EVENTS.TASK_CREATED, onTaskCreated);
@@ -425,7 +416,6 @@ export default function KanbanBoard({
         }
       }
 
-      const updatedBoards = [...boards, board];
       // Don't add to local state or notify parent — the socket BOARD_CREATED event
       // will add it to all members' sidebars (including the creator) to avoid duplicates.
       setActiveBoard(board);
@@ -574,7 +564,7 @@ export default function KanbanBoard({
   const handleAddTask = async (columnId: string, title: string) => {
     if (!activeBoard) return;
     try {
-      const task = await boardService.createTask(
+      await boardService.createTask(
         activeBoard._id,
         columnId,
         title,

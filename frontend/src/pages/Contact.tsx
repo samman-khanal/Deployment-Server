@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Navbar } from "../layout/Navbar";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
 import { Footer } from "../layout/Footer";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import {
   Mail,
@@ -15,7 +14,6 @@ import {
   HeadphonesIcon,
   ChevronDown,
   ArrowRight,
-  User,
 } from "lucide-react";
 import { toast } from "sonner";
 

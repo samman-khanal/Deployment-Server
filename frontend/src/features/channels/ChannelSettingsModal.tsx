@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import {
   Hash,
-  Lock,
   X,
   Users,
   Check,
@@ -28,7 +27,6 @@ export default function ChannelSettingsModal({
   onClose,
 }: ChannelSettingsModalProps) {
   const navigate = useNavigate();
-  const { user } = useAuth();
   const {
     workspaceId,
     members,

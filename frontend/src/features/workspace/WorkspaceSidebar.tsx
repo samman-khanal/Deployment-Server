@@ -7,14 +7,11 @@ import {
   ChevronRight,
   LayoutDashboard,
   Search,
-  Settings,
-  Bell,
   X,
   Lock,
   Loader2,
   Users,
   Sparkles,
-  Menu,
   CheckCheck,
 } from "lucide-react";
 import { toast } from "sonner";
@@ -54,7 +51,6 @@ export default function WorkspaceSidebar({
     setUnreadChannelCounts,
     unreadDMCounts,
     setUnreadDMCounts,
-    dms,
     setDms,
     dmThreadByOtherUserId,
     onlineUsers,

@@ -7,7 +7,6 @@ import {
   X,
   FileText,
   Download,
-  Loader2,
   ArrowDown,
   MessageSquare,
   Copy,

@@ -82,11 +82,6 @@ export default function UpgradePage() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const navState = (location.state ?? {}) as {
-    from?: "overview" | "dashboard";
-    workspaceId?: string;
-  };
-
   const handleBackToDashboard = () => {
     navigate("/dashboard");
   };
